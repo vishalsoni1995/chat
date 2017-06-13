@@ -1,0 +1,17 @@
+<div class="header">
+    <%= link_to "Sign Out" , destroy_user_session_path , method: :delete %>
+	<h1>Welcome <%= current_user.email %> </h1>
+</div>
+<div class="message_area">
+  <% @messages.each do |message| %>
+	<%= render partial: "message", locals: {message: message} %>
+  <% end %>	
+</div>
+<%= form_tag "/create_message", id: "message_form" , remote: true  do |f| %>
+    <%#= hidden_field_tag :conversation_id , conversation.id %>
+    <%= hidden_field_tag :user_id, current_user.id %>
+    <%= text_area_tag :body,"", cols: "5", rows: "5" , class: "textarea" ,placeholder: "Type message here..." , id: "type_message"%>
+    <%= submit_tag "Send" , class: "arrow-link"  %>
+<% end %>
+
+

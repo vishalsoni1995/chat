@@ -1,0 +1,6 @@
+var conversation = $('.message_area')
+//conversation.append("<%= j(render partial: 'message', :locals => {:message => @message}) %>");
+$(".textarea").val("");
+var messages_list = conversation;
+var height = messages_list[0].scrollHeight;
+messages_list.scrollTop(height);  
